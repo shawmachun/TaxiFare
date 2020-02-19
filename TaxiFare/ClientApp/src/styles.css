@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+code {
+  color: #e01a76;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* ProfileEditorComponent's private CSS styles */
+:host {
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+}
+
+label {
+  display: block;
+  width: 20em;
+  margin: .5em 0;
+  color: #607D8B;
+  font-weight: bold;
+}
+
+input {
+  height: 2em;
+  font-size: 1em;
+  padding-left: .4em;
+}
+
+button {
+  font-family: Arial;
+  background-color: #eee;
+  border: 10px;
+  padding: 5px 10px;
+  margin: 1em 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+  button:hover {
+    background-color: #cfd8dc;
+  }
+
+  button:disabled {
+    background-color: #eee;
+    color: #ccc;
+    cursor: auto;
+  }

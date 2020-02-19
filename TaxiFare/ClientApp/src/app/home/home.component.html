@@ -1,0 +1,40 @@
+<h1>Taxi Fare Calculator</h1>
+<p>Please enter the details of your taxi ride, and we'll calculate the price:</p>
+
+<form [formGroup]="taxiForm" (ngSubmit)="onSubmit(taxiForm.value)">
+  <div>
+    <label for="distanceL6">
+      Minutes Over 6 mph Or Stationary
+    </label>
+    <input id="distanceL6" type="number" min="0" formControlName="distanceL6" ng-model="required" required/>
+  </div>
+
+  <div>
+    <label for="timeG6OrIdle">
+      Distance Traveled Faster Than 6 mph
+    </label>
+    <input id="timeG6OrIdle" type="number" min="0" formControlName="timeG6OrIdle" ng-model="required" required/>
+  </div>
+
+  <div>
+    <label for="date">
+      Date
+    </label>
+    <input id="date" type="date" formControlName="date" ng-model="required" required />
+  </div>
+
+  <div>
+    <label for="startTime">
+      Start Time
+    </label>
+    <input type="time" id="startTime" formControlName="startTime" ng-model="required" required/>
+  </div>
+
+  <div>
+    <button class="button"  [disabled]="!taxiForm.valid" type="submit">Calculate!</button>
+  </div>
+</form>
+
+<div>
+  Total: {{ cost }}
+</div>
