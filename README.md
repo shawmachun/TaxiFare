@@ -1,4 +1,4 @@
-# TaxiFare
+# TaxiFare Installation Instructions
 
 cd ~/TaxiFare/TaxiFare/ClientApp
 
@@ -10,4 +10,3 @@ npm start
 
 Open TaxiFare in VisualStudio
 Run as IIS Express
-
