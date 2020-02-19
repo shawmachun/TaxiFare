@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -23,33 +20,8 @@ namespace TaxiFare.Controllers
 		{
 			try
 			{
-				int entryFee = 3;
-				double nightSurcharge = 0;
-				int peakSurcharge = 0;
-				double stateSurcharge = 0.5;
-				double travelCost = (distanceL6 / 5.0) * 0.35;
-				double timeCost = timeG6OrIdle * 0.35;
-
-				DateTime day = Convert.ToDateTime(date);
-				DateTime start = DateTime.Parse(startTime);
-				String dayOfWeek = day.DayOfWeek.ToString();
-
-				TimeSpan nightStart = new TimeSpan(20, 0, 0);
-				TimeSpan nightEnd = new TimeSpan(06, 0, 0);
-				TimeSpan peakStart = new TimeSpan(16, 0, 0);
-				TimeSpan peakEnd = new TimeSpan(20, 0, 0);
-
-				TimeSpan now = start.TimeOfDay;
-
-				bool isNight = now >= nightStart || now <= nightEnd;
-				bool isPeak = (dayOfWeek != "Saturday" && dayOfWeek != "Sunday") && (now >= peakStart && now <= peakEnd);
-
-				if (isNight) { nightSurcharge = 0.5; }
-				if (isPeak) { peakSurcharge = 1; }
-
-				double totalCost = entryFee + nightSurcharge + peakSurcharge + stateSurcharge + travelCost + timeCost;
-
-				return totalCost;
+				TaxiFareCalculator fare = new TaxiFareCalculator(date, startTime, timeG6OrIdle, distanceL6);
+				return fare.totalCost;
 			}
 			catch (Exception)
 			{
