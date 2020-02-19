@@ -11,11 +11,6 @@ namespace TaxiFare.Controllers
 	[Route("[controller]")]
 	public class TaxiFareController : ControllerBase
 	{
-		private static readonly string[] Summaries = new[]
-		{
-			"Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-		};
-
 		private readonly ILogger<TaxiFareController> _logger;
 
 		public TaxiFareController(ILogger<TaxiFareController> logger)

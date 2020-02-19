@@ -56,10 +56,6 @@ namespace Test
 				endpoints.MapControllerRoute(
 					name: "default",
 					pattern: "{controller}/{action=Index}/{id?}");
-
-				//endpoints.MapControllerRoute(
-    //		        name: "api",
-    //        		pattern: "{controller}/{id?}");
 			});
 
 			app.UseSpa(spa =>
