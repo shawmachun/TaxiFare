@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormBuilder, NgForm, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, NgForm, FormGroup, Validators, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -9,6 +9,11 @@ import { HttpClient } from '@angular/common/http';
 export class TaxiFareComponent implements OnInit {
   public cost: String = "$0.00";
   public taxiForm: FormGroup;
+  public timeG6OrIdle: number;
+  public distanceL6: number;
+  public date: string;
+  public startTime: string;
+
   public formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
@@ -16,10 +21,10 @@ export class TaxiFareComponent implements OnInit {
 
   constructor( private formBuilder: FormBuilder, private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { 
     this.taxiForm = this.formBuilder.group({
-      timeG6OrIdle: 0,
-      distanceL6: 0,
-      date: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric'}),
-      startTime: new Date().toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }),
+      timeG6OrIdle: new FormControl(this.timeG6OrIdle, [Validators.required]),
+      distanceL6: new FormControl(this.distanceL6, [Validators.required]),
+      date: new FormControl(this.date, [Validators.required]),
+      startTime: new FormControl(this.startTime, [Validators.required]),
     });
   }
   

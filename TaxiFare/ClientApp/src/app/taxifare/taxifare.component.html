@@ -27,11 +27,11 @@
     <label for="startTime">
       Start Time
     </label>
-    <input type="time" id="startTime" formControlName="startTime" ng-model="required" required/>
+    <input id="date" type="time" id="startTime" formControlName="startTime" ng-model="required" required/>
   </div>
 
   <div>
-    <button class="button"  [disabled]="!taxiForm.valid" type="submit">Calculate!</button>
+    <button class="button"  [disabled]="!taxiForm.valid" type="submit">Calculate</button>
   </div>
 </form>
 
