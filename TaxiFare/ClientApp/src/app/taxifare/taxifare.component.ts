@@ -1,14 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, NgForm, FormGroup, Validators } from '@angular/forms';
-import { TaxiCalculatorService } from '../services/taxi-calculator.service';
-import { Time } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
+  selector: 'app-taxifare',
+  templateUrl: './taxifare.component.html',
 })
-export class HomeComponent implements OnInit {
+export class TaxiFareComponent implements OnInit {
   public cost: String = "$0.00";
   public taxiForm: FormGroup;
   public formatter = new Intl.NumberFormat('en-US', {
