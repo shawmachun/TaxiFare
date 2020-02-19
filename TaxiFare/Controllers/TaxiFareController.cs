@@ -16,11 +16,11 @@ namespace TaxiFare.Controllers
 		}
 
 		[HttpGet]
-		public double Get([FromQuery] string date, [FromQuery] string startTime, [FromQuery] int distanceL6, [FromQuery] int timeG6OrIdle)
+		public double Get([FromQuery] string date, [FromQuery] string startTime, [FromQuery] int distanceLessThanSix, [FromQuery] int timeGreaterThanSixOrIdle)
 		{
 			try
 			{
-				TaxiFareCalculator fare = new TaxiFareCalculator(date, startTime, timeG6OrIdle, distanceL6);
+				TaxiFareCalculator fare = new TaxiFareCalculator(date, startTime, timeGreaterThanSixOrIdle, distanceLessThanSix);
 				return fare.totalCost;
 			}
 			catch (Exception)

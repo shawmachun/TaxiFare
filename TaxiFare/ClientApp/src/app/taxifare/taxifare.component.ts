@@ -9,8 +9,8 @@ import { HttpClient } from '@angular/common/http';
 export class TaxiFareComponent implements OnInit {
   public cost: String = "$0.00";
   public taxiForm: FormGroup;
-  public timeG6OrIdle: number;
-  public distanceL6: number;
+  public timeGreaterThanSixOrIdle: number;
+  public distanceLessThanSix: number;
   public date: string;
   public startTime: string;
 
@@ -21,8 +21,8 @@ export class TaxiFareComponent implements OnInit {
 
   constructor( private formBuilder: FormBuilder, private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { 
     this.taxiForm = this.formBuilder.group({
-      timeG6OrIdle: new FormControl(this.timeG6OrIdle, [Validators.required]),
-      distanceL6: new FormControl(this.distanceL6, [Validators.required]),
+      timeGreaterThanSixOrIdle: new FormControl(this.timeGreaterThanSixOrIdle, [Validators.required]),
+      distanceLessThanSix: new FormControl(this.distanceLessThanSix, [Validators.required]),
       date: new FormControl(this.date, [Validators.required]),
       startTime: new FormControl(this.startTime, [Validators.required]),
     });
@@ -34,15 +34,14 @@ export class TaxiFareComponent implements OnInit {
     console.log(taxiData);
     this.http.get<any>(this.baseUrl + 'taxifare' ,{
       params: {
-        distanceL6: taxiData.distanceL6.toString(),
-        timeG6OrIdle: taxiData.timeG6OrIdle.toString(),
+        distanceLessThanSix: taxiData.distanceLessThanSix.toString(),
+        timeGreaterThanSixOrIdle: taxiData.timeGreaterThanSixOrIdle.toString(),
         date: taxiData.date.toString(),
         startTime: taxiData.startTime.toString()
       }
     }).subscribe(result => {
       var temp = result;
       this.cost= this.formatter.format(temp); 
-    }, error => console.error(error));
-    
+    }, error => console.error(error));   
   }
 }

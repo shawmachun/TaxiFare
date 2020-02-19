@@ -6,18 +6,18 @@ namespace TaxiFare
 	{
 		public string date;
 
-		public int timeG6OrIdle;
+		public int timeGreaterThanSixOrIdle;
 
-		public int distanceL6;
+		public int distanceLessThanSix;
 
 		public string startTime;
 
-		public TaxiFareCalculator(string inputDate, string inputStartTime, int inputTimeG6OrIdle, int intinputDistanceL6)
+		public TaxiFareCalculator(string inputDate, string inputStartTime, int inputTimeGreaterThanSixOrIdle, int intinputDistanceLessThanSix)
 		{
 			date = inputDate;
 			startTime = inputStartTime;
-			timeG6OrIdle = inputTimeG6OrIdle;
-			distanceL6 = intinputDistanceL6;
+			timeGreaterThanSixOrIdle = inputTimeGreaterThanSixOrIdle;
+			distanceLessThanSix = intinputDistanceLessThanSix;
 		}
 		public double totalCost { 
 			get { 
@@ -25,8 +25,8 @@ namespace TaxiFare
 				double nightSurcharge = 0;
 				int peakSurcharge = 0;
 				double stateSurcharge = 0.5;
-				double travelCost = (distanceL6 / 5.0) * 0.35;
-				double timeCost = timeG6OrIdle * 0.35;
+				double travelCost = distanceLessThanSix * 0.35;
+				double timeCost = timeGreaterThanSixOrIdle * 0.35;
 
 				DateTime day = Convert.ToDateTime(date);
 				DateTime start = DateTime.Parse(startTime);

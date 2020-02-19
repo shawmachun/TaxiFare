@@ -3,17 +3,17 @@
 
 <form [formGroup]="taxiForm" (ngSubmit)="onSubmit(taxiForm.value)">
   <div>
-    <label for="distanceL6">
+    <label for="distanceLessThanSix">
       Minutes Over 6 mph Or Stationary
     </label>
-    <input id="distanceL6" type="number" min="0" formControlName="distanceL6" ng-model="required" required/>
+    <input id="distanceLessThanSix" type="number" min="0" formControlName="distanceLessThanSix" ng-model="required" required/>
   </div>
 
   <div>
-    <label for="timeG6OrIdle">
-      Distance Traveled Faster Than 6 mph
+    <label for="timeGreaterThanSixOrIdle">
+      Distance Traveled Faster Than 6 mph (1/5 Mile Unit)
     </label>
-    <input id="timeG6OrIdle" type="number" min="0" formControlName="timeG6OrIdle" ng-model="required" required/>
+    <input id="timeGreaterThanSixOrIdle" type="number" min="0" formControlName="timeGreaterThanSixOrIdle" ng-model="required" required/>
   </div>
 
   <div>
